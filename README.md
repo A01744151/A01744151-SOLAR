@@ -1,35 +1,30 @@
-# A01744151 SOLAR — Landing page
+# A01744151 SOLAR — Plataforma de cotización V3
 
-Landing page **100 % estática** para la semana 1 del proyecto TE1020, **Análisis de Circuitos Eléctricos**. Presenta la propuesta académica para Photon Labs: consumo, paneles, inversor, baterías, catálogo, evaluación económica y PDF final.
+Sitio web estático para GitHub Pages, sin servidor ni base de datos, con dos páginas:
+
+- `index.html`: catálogo de seis modelos de referencia + modelo personalizado, cálculo de consumo eléctrico por recibo o inventario, estimación de número de paneles, energía, ahorro y retorno simple. Descarga un resumen `.txt` de la cotización simulada.
+- `simulador.html`: laboratorio visual con orientación, irradiancia, sombra uniforme, temperatura y resistencia de carga, gráficas y animación didáctica del efecto fotovoltaico. Clic en el logotipo para regresar a inicio.
+
+## Publicar
+
+1. Descomprimir el ZIP.
+2. Subir el **contenido** de la carpeta `A01744151-SOLAR-V3` a la raíz del repositorio, sin una carpeta adicional.
+3. Mantener `assets/` como carpeta (no mover sus archivos a la raíz).
+4. En GitHub, Settings → Pages → Deploy from branch → main → /(root).
+5. Abrir `https://a01744151.github.io/A01744151-SOLAR/` tras completarse el despliegue.
+
+## Importante
+
+- Los seis módulos proceden del conjunto de modelos mostrado por el usuario como referencia; las potencias nominales son de referencia, y las especificaciones eléctricas exactas deben contrastarse con fichas técnicas originales antes de una instalación.
+- **Todos los precios son simulados** y editables; no son cotizaciones de proveedores.
+- Generación mensual = cantidad × Wp/1000 × horas solares pico × rendimiento × 30 días.
+- Cantidad = redondeo hacia arriba de consumo mensual × cobertura objetivo / generación estimada por módulo.
+- Ahorro simple = mínimo(consumo, generación) × tarifa introducida. No modela tarifas reales complejas, estacionalidad, exportación de excedentes, cargos fijos, baterías, mantenimiento, impuestos, inflación ni degradación.
+- El resumen descargable es un archivo `.txt` y no se presenta como PDF comercial.
+- El laboratorio utiliza un **modelo equivalente lineal didáctico**: Isc = (irradiancia efectiva/1000) × (1 + 0.0005 × (temperatura−25)); Voc = 20 × (1−0.0035 × (temperatura−25)) × (0.72 + 0.28 × raíz(irradiancia efectiva/1000)), con Voc=0 en irradiancia nula. La carga resistiva produce I = Isc/(1 + R×Isc/Voc), V=I×R, P=VI. Es una aproximación educativa, no la curva I–V de un módulo real.
+- La irradiancia directa proyectada usa máximo(0, cos(ángulo)) y sombra uniforme equivalente; no modela irradiancia difusa ni sombreado parcial.
+- No hay información académica de la asignatura visible en el sitio.
 
 ## Archivos
 
-- `index.html`: contenido y estructura de la página.
-- `styles.css`: estilos y versión adaptable a celular.
-- `assets/`: logotipo original del proyecto (optimizado para web), isotipo y favicon.
-- `.nojekyll`: permite servir los archivos directamente con GitHub Pages.
-
-No utiliza JavaScript, bibliotecas externas, servidor ni base de datos. El ejemplo de cálculo es **hipotético** y no sustituye una medición, revisión técnica o cotización.
-
-## Cómo publicarla en GitHub Pages
-
-1. Crear un repositorio público, por ejemplo `a01744151-solar`.
-2. Subir **todos los archivos y la carpeta `assets`**, respetando la estructura. `index.html` debe quedar en la raíz del repositorio.
-3. Ir a `Settings → Pages`.
-4. En **Build and deployment**, elegir `Deploy from a branch`.
-5. Seleccionar la rama `main`, la carpeta `/(root)` y guardar.
-6. Una vez desplegada, la dirección suele ser `https://TU-USUARIO.github.io/a01744151-solar/`. Sustituir `TU-USUARIO` por tu nombre de usuario de GitHub.
-
-## Cómo verla localmente
-
-Abrir `index.html` en el navegador. No necesita instalación.
-
-## Personalización
-
-- Cambia el texto y los títulos desde `index.html`.
-- Modifica los colores principales en las variables al inicio de `styles.css`.
-- Sustituye los archivos dentro de `assets/` si deseas actualizar la identidad gráfica.
-
-## Nota académica
-
-El caso planteado en el documento es de una **empresa simulada**. La landing presenta la solución y la ruta prevista, pero **no realiza simulaciones, no genera archivos PDF y no comprueba equipos reales**. La construcción del simulador y el reporte son entregables de etapas posteriores del reto.
+`index.html`, `simulador.html`, `styles.css`, `catalogo.js`, `cotizador.js`, `simulador.js`, `.nojekyll`, `assets/`.
